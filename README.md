@@ -24,8 +24,8 @@ An intelligent blog post generation system that uses AI to create SEO-optimized 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/ai-blog-generator.git
-cd ai-blog-generator
+git clone https://github.com/HarshaVardhanMannem/AI-powered-Blog-post-Generator.git
+cd AI-powered-Blog-post-Generator
 ```
 
 2. Create and activate a virtual environment:
@@ -52,7 +52,7 @@ NVIDIA_API_KEY=your_nvidia_api_key_here
 ## Project Structure
 
 ```
-ai-blog-generator/
+AI-powered-Blog-post-Generator/
 ├── app.py                 # Main Flask application
 ├── ai_generator.py        # AI content generation logic
 ├── seo_fetcher.py         # SEO data fetching

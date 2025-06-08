@@ -198,20 +198,66 @@
             font-size: 1.3rem;
             color: var(--primary-color);
             margin-bottom: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 0.2px;
-            z-index: 1;
             position: relative;
+            z-index: 1;
         }
+
+        .seo-metrics {
+            background: rgba(37,99,235,0.07);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(37,99,235,0.1);
+        }
+
+        .seo-metrics h4 {
+            color: var(--accent-color);
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .seo-metrics h4::before {
+            content: '📊';
+            font-size: 1.2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-value.volume::before { content: '🔍'; }
+        .metric-value.difficulty::before { content: '⚡'; }
+        .metric-value.cpc::before { content: '💲'; }
 
         .post-actions {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-            z-index: 1;
-            position: relative;
+            margin-top: 1.5rem;
         }
 
         .post-actions a,
@@ -336,27 +382,27 @@
                         <div class="post-card">
                             <h3>{{ post.title }}</h3>
                             {% if post.seo_data %}
-                            <div class="seo-info" style="margin-bottom: 1rem; background: rgba(37,99,235,0.07); border-radius: 0.7rem; padding: 0.8rem 1rem; font-size: 0.98rem; color: var(--text-secondary);">
-                                <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center;">
-                                    <span><strong>🔎 Volume:</strong> {{ post.seo_data.search_volume }}</span>
-                                    <span><strong>⚡ Difficulty:</strong> {{ post.seo_data.keyword_difficulty }}</span>
-                                    <span><strong>💲 CPC:</strong> ${{ post.seo_data.avg_cpc }}</span>
-                                    {% if post.seo_data.competition %}<span><strong>🏆 Competition:</strong> {{ post.seo_data.competition }}</span>{% endif %}
-                                    {% if post.seo_data.trend %}<span><strong>�� Trend:</strong> {{ post.seo_data.trend }}</span>{% endif %}
+                            <div class="seo-metrics">
+                                <h4>SEO Performance</h4>
+                                <div class="metrics-grid">
+                                    <div class="metric-item">
+                                        <span class="metric-label">Search Volume</span>
+                                        <span class="metric-value volume">{{ post.seo_data.search_volume|int|format(',') }}</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Difficulty</span>
+                                        <span class="metric-value difficulty">{{ post.seo_data.keyword_difficulty|int }}/100</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">CPC</span>
+                                        <span class="metric-value cpc">${{ post.seo_data.avg_cpc|round(2) }}</span>
+                                    </div>
                                 </div>
-                                {% if post.seo_data.related_keywords %}
-                                <div style="margin-top: 0.5rem;">
-                                    <strong>Related:</strong>
-                                    <span style="color: var(--accent-color);">
-                                        {{ post.seo_data.related_keywords | join(', ') }}
-                                    </span>
-                                </div>
-                                {% endif %}
                             </div>
                             {% endif %}
                             <div class="post-actions">
-                                <a href="{{ url_for('view_post', filename=post.filename) }}">View Post</a>
-                                <button onclick="deletePost('{{ post.filename }}')">Delete</button>
+                                <a href="{{ url_for('view_post', filename=post.filename) }}" class="view-button">View Post</a>
+                                <button onclick="deletePost('{{ post.filename }}')" class="delete-button">Delete</button>
                             </div>
                         </div>
                     {% endfor %}
