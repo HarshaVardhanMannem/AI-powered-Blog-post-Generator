@@ -4,20 +4,22 @@ An intelligent blog post generation system that uses AI to create SEO-optimized 
 
 ## Features
 
-- 🤖 AI-powered blog post generation using NVIDIA's AI models
-- 📊 SEO optimization with real-time metrics
-- 📝 Markdown to HTML conversion
-- 🔄 Automated daily post generation
+- 🤖 AI-powered blog post generation using Mistral AI's Medium model
+- 📊 SEO optimization with real-time metrics and dedicated template
+- 📝 Markdown to HTML conversion with code highlighting
+- 🔄 Automated daily post generation with random keywords
 - 📱 Responsive web interface
 - 🔍 Source management and verification
-- 📈 SEO performance tracking
+- 📈 SEO performance tracking with detailed metrics
 - 🗑️ Content management system
+- 🔐 Secure API key management
+- 📦 JSON-based content storage
 
 ## Prerequisites
 
 - Python 3.8 or higher
-- NVIDIA API key
-- Flask
+- Mistral AI API key
+- Flask 2.3.3
 - Virtual environment (recommended)
 
 ## Installation
@@ -46,7 +48,7 @@ pip install -r requirements.txt
 
 4. Create a `.env` file in the root directory and add your API keys:
 ```env
-NVIDIA_API_KEY=your_nvidia_api_key_here
+MISTRAL_API_KEY=your_mistral_api_key_here
 ```
 
 ## Project Structure
@@ -64,7 +66,10 @@ AI-powered-Blog-post-Generator/
 ├── templates/            # HTML templates
 │   ├── index.html        # Main page template
 │   └── blog_post.html    # Blog post template
-└── blogEnv/              # Virtual environment
+├── static/              # Static assets
+│   ├── css/            # Stylesheets
+│   └── js/             # JavaScript files
+└── blogEnv/            # Virtual environment
 ```
 
 ## Usage
@@ -94,8 +99,13 @@ python app.py
 - `GET /`: Home page with list of all blog posts
 - `GET /post/<filename>`: View a specific blog post
 - `GET /generate`: Generate a new blog post
+  - Query Parameters:
+    - `keyword`: The topic for the blog post
+  - Returns: JSON with generated content and SEO data
 - `POST /delete_post/<keyword>`: Delete a blog post
+  - Returns: Success/error message
 - `GET /health`: Health check endpoint
+  - Returns: Application status
 
 ### Helper Functions
 
@@ -106,31 +116,116 @@ python app.py
 - `save_post_json()`: Save generated posts as JSON
 - `generate_daily_post()`: Scheduled post generation
 
+## Error Handling
+
+The application includes comprehensive error handling for:
+
+### API and Network Errors
+- API key validation and authentication
+- Network connectivity issues
+- Rate limiting and timeout handling
+- Invalid API responses
+
+### Content Generation
+- Invalid keyword handling
+- Content validation
+- Markdown parsing errors
+- SEO data fetching failures
+
+### File Operations
+- File read/write permissions
+- Directory creation
+- JSON parsing and validation
+- Database operations
+
+### Template Rendering
+- Missing template files
+- Template syntax errors
+- Variable substitution errors
+
+### User Input
+- Input validation
+- Sanitization
+- Malformed requests
+- Invalid parameters
+
+## Automated Features
+
+### Content Generation
+- Daily post generation using random keywords
+- Keyword selection from predefined list
+- Automatic SEO data fetching
+- Content validation and formatting
+
+### SEO Integration
+- Real-time SEO metrics fetching
+- Keyword difficulty analysis
+- Search volume tracking
+- CPC (Cost Per Click) monitoring
+- Custom SEO template integration
+
+### Content Management
+- Automatic file organization
+- JSON-based content storage
+- Markdown to HTML conversion
+- Source verification and management
+
+### System Maintenance
+- Health check monitoring
+- Error logging and tracking
+- Database backup and recovery
+- Cache management
+
 ## Content Generation
 
 The system generates blog posts with the following structure:
 
 1. Title
+   - Accurate and compelling
+   - Contains attention-grabbing words
+   - Appeals to beginners and general audiences
+   - Naturally incorporates the main keyword
+
 2. Introduction (2 paragraphs)
+   - Engaging hook or question
+   - Clear topic explanation
+   - Relevance to readers
+   - Value proposition
+
 3. Main Content
-   - Simple explanations
+   - Simple explanations with analogies
    - Practical examples
    - Detailed explanations
    - Step-by-step breakdowns
    - Common misconceptions
    - Benefits and challenges
    - Current trends
+
 4. Future Outlook
+   - Emerging trends
+   - Potential challenges
+   - Opportunities
+   - What to watch for
+
 5. Conclusion
-6. Sources (3-5 reputable sources)
+   - Key takeaways
+   - Actionable next steps
+   - Call-to-action
+
+6. Sources (3-5 verified sources)
+   - Reputable sources
+   - Verified links
+   - Brief descriptions
 
 ## SEO Integration
 
 Each generated post includes:
-- Search volume
-- Keyword difficulty
-- Average CPC (Cost Per Click)
+- Search volume with monthly statistics
+- Keyword difficulty score (0-100)
+- Average CPC (Cost Per Click) in USD
 - SEO-optimized content structure
+- Custom SEO template integration
+- Performance metrics tracking
 
 ## Automated Features
 
@@ -138,15 +233,6 @@ Each generated post includes:
 - SEO data fetching and integration
 - Markdown to HTML conversion
 - Source verification and management
-
-## Error Handling
-
-The application includes comprehensive error handling for:
-- Database operations
-- Post generation
-- Template formatting
-- File operations
-- API requests
 
 ## Contributing
 
@@ -162,7 +248,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- NVIDIA AI Models
+- Mistral AI Models
 - Flask Framework
 - Python Community
 
@@ -178,4 +264,7 @@ For support, please open an issue in the GitHub repository or contact the mainta
 - [ ] Custom AI model integration
 - [ ] Advanced SEO optimization
 - [ ] Content scheduling system
-- [ ] User authentication system 
+- [ ] User authentication system
+- [ ] Content versioning
+- [ ] Automated image generation
+- [ ] API rate limiting and monitoring 
