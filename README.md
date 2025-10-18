@@ -2,6 +2,43 @@
 
 An intelligent blog post generation system that uses AI to create SEO-optimized content. This application automatically generates blog posts based on keywords, incorporates SEO best practices, and provides a clean web interface for content management.
 
+## 🚀 Live Demo
+
+### Quick Start
+1. **Start the application:**
+   ```bash
+   python app.py
+   ```
+
+2. **Access the web interface:**
+   - Open your browser and navigate to `http://localhost:5000`
+   - View all generated blog posts on the main page
+
+3. **Generate a new blog post:**
+   - Visit: `http://localhost:5000/generate?keyword=artificial-intelligence`
+   - Or try: `http://localhost:5000/generate?keyword=machine-learning`
+
+4. **View generated content:**
+   - Click on any post from the main page
+   - Or access directly: `http://localhost:5000/post/artificial-intelligence`
+
+### Demo Features
+- **AI Content Generation**: Enter any keyword and watch AI create a comprehensive blog post
+- **SEO Integration**: View real-time SEO metrics including search volume, keyword difficulty, and CPC
+- **Responsive Design**: Clean, modern interface that works on all devices
+- **Content Management**: View, organize, and delete generated posts
+- **Automated Scheduling**: Daily post generation with random keywords
+
+### Sample Output
+The system generates structured blog posts with:
+- Compelling titles optimized for SEO
+- Engaging introductions with hooks
+- Comprehensive main content with examples
+- Future outlook and trends
+- Actionable conclusions
+- Verified sources and references
+- Real-time SEO performance metrics
+
 ## Features
 
 - 🤖 AI-powered blog post generation using Mistral AI's Medium model
