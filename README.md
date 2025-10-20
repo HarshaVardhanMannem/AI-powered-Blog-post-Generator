@@ -4,6 +4,10 @@ An intelligent blog post generation system that uses AI to create SEO-optimized 
 
 ## 🚀 Live Demo
 
+![AI Blog Post Generator Demo](BlogPostDemo.gif)
+
+*Watch the AI Blog Post Generator in action - from keyword input to SEO-optimized content generation*
+
 ### Quick Start
 1. **Start the application:**
    ```bash

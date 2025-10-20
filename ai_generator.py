@@ -58,10 +58,11 @@ def generate_blog_post(keyword: str, seo_data: Dict[str, float]) -> str:
     Content Requirements:
     ### 1. Title Creation 
     Create a accurate, meaningful, and compelling title that:
-        - Excatly matches the content
+        - Exactly matches the content
         - Contains catchy and attention grabbing words
         - Appeals to beginners and general audiences but not too simple
         - Incorporates the main keyword naturally and is not too long or too short
+        - Use ONLY # for the main title (no **bold** markers in headings)
 
     ### 2. Introduction (2 paragraphs, ~5 lines each)
         - Start with a relatable hook or question
@@ -109,7 +110,7 @@ def generate_blog_post(keyword: str, seo_data: Dict[str, float]) -> str:
 
         **Formatting:**
         - Use proper Markdown formatting
-        - Break up text with relevant subheadings
+        - Break up text with relevant subheadings (use #, ##, ### without **bold** markers)
         - Include bullet points for easy scanning
         - Bold key terms and important points
         - Use italics for emphasis sparingly
